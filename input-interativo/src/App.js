@@ -2,9 +2,9 @@
 
 import React, { Component } from "react";
 import styled from "styled-components";
-// const Title = styled.h1`
-// color: red;
-// `;
+const Title = styled.h1`
+color: red;
+`;
 class InputInterativo extends Component {
 
   state = {
@@ -16,7 +16,7 @@ class InputInterativo extends Component {
 
   handleChange = (event) => {
     this.setState({
-      tafera: event.target.value // //event vai mirar no input e pegar o valor atual dele
+      tarefa: event.target.value // //event vai mirar no input e pegar o valor atual dele
     });
   };
 
@@ -26,39 +26,65 @@ class InputInterativo extends Component {
     //se o state tarefa for extremamente igual a vazio returne nada, por isso nao ten nada depois do return
     if (this.state.tarefa === "") {
       return;
-    };
+    }
 
     this.setState({
       lista: this.state.lista.concat({ //atualize os dade e concatene um 
         tarefa: this.state.tarefa, //nova tarefa
         id: Math.random() //vai gerar automaticamente uma id para cada item da lista/array. (0 - 1)
       }),
-      tafera: " "
+      tarefa: ""
     });
   };
 
-  //nao estudado 
   apagar = (id) => {
-
+      //Parâmetro recebe a id da nossa tarefa (itens), pq cada tarefa tem sua identidade.
+    this.setState({
+      lista: this.state.lista.filter((item) => {
+        return item.id !== id; //ele vai comparar os id's e se for diferente, ela vai guardar em uma lista (invisível)
+      })
+    });
   };
+
+  // exemplo de filter
+  // const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+  // const result = words.filter(word => word.length > 6);
+  // console.log(result);
+  //  Expected output: Array ["exuberant", "destruction", "present"]
+  
+
+
 
   render() {
     return (
       <div>
-        <h1>Input Interativo</h1>
-   {/* onChange: evento de mudança */}
+        <Title>Input Interativo</Title>
+        {/* onChange: evento de mudança */}
         {/* O value seta o valor inicial do input, nesse caso ele está vazio */}
         <h2>Lista</h2>
-        <input value={this.state.tarefa} onChange={this.handleChange}  />
+
+
+        <input value={this.state.tarefa} onChange={this.handleChange} placeholder="escreva aqui" />
 
         <button onClick={this.adicionar} > Add </button>
 
-      <ul>
+        <ul>
+          {this.state.lista.map((item) => (
+            <li>
+              {item.tarefa}
 
-      </ul>
-
+              {/* Calback é uma função de flecha  dentro do evento de click. Assim conseguimos chamar a função com () */}
+              <button onClick={() => {
+               this.apagar(item.id)
+              }}>
+                x
+              </button>
+            </li>
+          ))}
+        </ul>
 
       </div>
+
     )
   }
 
