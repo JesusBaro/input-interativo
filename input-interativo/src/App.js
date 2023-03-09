@@ -47,24 +47,24 @@
 //   };
 
 
-//---------------------------------------
+// //// ---------------------------------------
 //   // exemplo de filter
 //   // const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'], novaLista=[];
 //   // const result = words.filter(word => word.length > 6);
 //   // console.log(result);
 //   //  Expected output: Array ["exuberant", "destruction", "present"]
-//procurar() =>{
-// this.setState({
-//   // novaLista: this.state.nomes.filter ((item) => item.includs("L"))
-// (includs verifica valor digitado)
-// }
-// )
-// // 
-// }
+// // procurar() =>{
+// // this.setState({
+// //   // novaLista: this.state.nomes.filter ((item) => item.includs("L"))
+// // (includs verifica valor digitado)
+// // }
+// // )
+// // // 
+// // }
 
 
 
-//---------------------------------------
+// //// ---------------------------------------
 
 //   render() {
 //     return (
@@ -167,16 +167,13 @@ class Todo extends Component {
         <ul>
           {this.state.lista.map((item) => (
             <>
-            <li> {item.fruta}
-
-            </li> 
+            <li> {item.fruta} </li> 
               <button
                   onClick={() => { 
-                    this.lista(item.id)} }
+                    this.apagarFrutas(item.id)} }
               > {" "}delete{" "}
               </button>
               </>
-
 
           ))}
         </ul>
