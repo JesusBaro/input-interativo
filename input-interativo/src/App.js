@@ -114,9 +114,7 @@ class Todo extends Component {
     lista: [] //lista de frutas
   }
 
-
-
-  handelChange = (e) => {
+  handleChange = (e) => {
     this.setState({
       fruta: e.target.value
       // event - é como se fosse o abridor do input 
@@ -127,14 +125,13 @@ class Todo extends Component {
   handleClick = () => {
     if (this.state.fruta === "") {
       return;
-    }
+    };
     this.setState({ //manipular estado
       lista: this.state.lista.concat({ //CONCAT - concatena todos os itens que foram digitados
         fruta: this.state.fruta,  // aqui as frutas novas serão juntadas com as antigs
         id: Math.random() //gera um numero automatico de 0 a 1, criando uma id para cada fruta
       }),
-      fruta: "" //toda coisa q for adicionada ele volta ao fazer inicial, ou seja vazio
-
+      fruta: "", //toda coisa q for adicionada ele volta ao fazer inicial, ou seja vazio
     }); 
   }
 
@@ -148,16 +145,14 @@ class Todo extends Component {
     });
   };
 
-
-
   render() {
     return (
       <div>
-        <h1> To do </h1>
+        <h1> Input Interativo </h1>
 
         {/* input para receber oque foi escrito */}
         <input
-          onChange={this.handelChange}
+          onChange={this.handleChange}
           value={this.state.fruta} // 
           placeholder="escreva sua lista"
         />
